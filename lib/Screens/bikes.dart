@@ -57,19 +57,42 @@ class _BikesState extends State<Bikes> {
 }
 
 class CustomListView extends StatefulWidget {
+
   final List<Bike> bikes;
   CustomListView(this.bikes);
+ 
 
   @override
+ 
+  
   _CustomListViewState createState() => _CustomListViewState();
 }
 
 class _CustomListViewState extends State<CustomListView> {
+   
+  TextEditingController editingController = TextEditingController();
   List<Bike> bikesToCompare = List<Bike>();
   Widget build(context) {
     return Stack(
       children: <Widget>[
+        Padding(
+              padding: const EdgeInsets.only(top:00),
+              child: TextField(
+                onChanged: (value) {
+                  //filterSearchResults(value);
+                },
+                controller: editingController,
+                decoration: InputDecoration(
+                    labelText: "Search",
+                    hintText: "Search",
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+              ),
+            ),
+            SizedBox(height:20),
         GridView.builder(
+          padding: const EdgeInsets.only(top:70),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 0.0,
